@@ -5,14 +5,15 @@
 	</head>
 	<body>
 		<canvas id="AsciiCanvas" width="672px" height="504px"></canvas>
+		<textarea name="textDisplay" cols="140" rows="38">	
+		</textarea>
 		<br>
 		<p>Enter URL of image</p><input type="text" id="textToEnter" value="http://upload.wikimedia.org/wikipedia/commons/9/9e/Humpback_stellwagen_edit.jpg" class="text">
 		<button onclick="DrawImageToCanvas();">SubmitURL</button>
 		<button onclick="FindEdges();">Find Edges</button>
+		<img id="testImage" width="256" height="256">
 		<br>
 		<br>
-		<textarea name="textDisplay" cols="100" rows="8">	
-		</textarea>
 		
 		<script type="text/javascript" src="JavaScript.js"> </script>
 	</body>
