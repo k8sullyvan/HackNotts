@@ -1,5 +1,5 @@
-var context = document.getElementById('AsciiCanvas').getContext("2d");
-var canvas = document.getElementById('AsciiCanvas');
+var ctx = document.getElementById('AsciiCanvas').getContext("2d");
+var c = document.getElementById('AsciiCanvas');
 
 
 function writeTextToCanvas(){
@@ -10,11 +10,39 @@ var bgimage = document.createElement("IMG");
 function DrawImageToCanvas(){
 	bgimage.src = document.getElementById("textToEnter").value
 	bgimage.onload = function(){
-		context.drawImage(bgimage, 0, 0, 680, 500);
+		ctx.drawImage(bgimage, 0, 0, 672, 504);
 	};
 }
 
 function FindEdges(){
+	var img = document.createElement("IMG");
+	img = bgimage.src;
+	Filters = {};
+	Filters.getPixels = function(img) {
+	  //var c = this.getCanvas(img.width, img.height);
+	  //var ctx = c.getContext('2d');
+  		img.onload = function(){
+  			ctx.drawImage(img,0,0);
+  		};
+	  	//ctx.drawImage(img,0,0);
+	  	return ctx.getImageData(0,0,672, 504);
+	};
+
+	Filters.getCanvas = function(w,h) {
+	  var c = document.createElement('canvas');
+	  c.width = w;
+	  c.height = h;
+	  return c;
+	};
+	
+	Filters.filterImage = function(filter, image, var_args) {
+	  var args = [this.getPixels(image)];
+	  for (var i=2; i<arguments.length; i++) {
+	    args.push(arguments[i]);
+	  }
+	  return filter.apply(null, args);
+	};
+	
 	var img = bgimage.src;
 	//     img.addEventListener('load', function() {
 
@@ -103,6 +131,6 @@ function FindEdges(){
 }
 
 function clearCanvas(){
-	ctxMainCanvas.clearRect(0, 0, 680, 500);
+	ctx.clearRect(0, 0, 680, 500);
 	return false;
 }
