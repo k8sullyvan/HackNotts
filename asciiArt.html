@@ -4,10 +4,16 @@
 		<link rel="stylesheet" type="text/css" href="AsciiArt.css">
 	</head>
 	<body>
-		<canvas id="AsciiCanvas" width="680px" height="500px"></canvas>
+		<canvas id="AsciiCanvas" width="672px" height="504px"></canvas>
 		<br>
-		<p>Enter URL of image</p><input type="text" id="textToEnter" class="text">
+		<p>Enter URL of image</p><input type="text" id="textToEnter" value="http://upload.wikimedia.org/wikipedia/commons/9/9e/Humpback_stellwagen_edit.jpg" class="text">
+		<button onclick="DrawImageToCanvas();">SubmitURL</button>
+		<button onclick="FindEdges();">Find Edges</button>
+		<br>
+		<br>
 		<textarea name="textDisplay" cols="100" rows="8">	
 		</textarea>
+		
+		<script type="text/javascript" src="JavaScript.js"> </script>
 	</body>
 </html>
